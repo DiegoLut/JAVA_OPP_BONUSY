@@ -1,0 +1,7 @@
+pl\lutomski\kolokwium\lutomski\logic\QuadraticEquationSolver.class
+pl\lutomski\kolokwium\lutomski\logic\ProduktFileWriter.class
+pl\lutomski\kolokwium\lutomski\logic\FileWriterInterface.class
+pl\lutomski\kolokwium\lutomski\logic\ZakupyInterface.class
+pl\lutomski\kolokwium\lutomski\logic\ZakupyManager.class
+pl\lutomski\kolokwium\lutomski\logic\IncorrectValueException.class
+pl\lutomski\kolokwium\lutomski\logic\KolokwiumLutomskiLogic.class
