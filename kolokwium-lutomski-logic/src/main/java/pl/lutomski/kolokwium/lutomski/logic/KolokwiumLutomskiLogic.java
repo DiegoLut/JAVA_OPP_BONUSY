@@ -37,20 +37,26 @@ public class KolokwiumLutomskiLogic {
                     try {
                         System.out.print("Nazwa: ");
                         String nazwa = sc.nextLine();
+
                         System.out.print("Waga (kg): ");
                         int waga = Integer.parseInt(sc.nextLine());
+
                         System.out.print("Cena za sztukę: ");
                         float cena = Float.parseFloat(sc.nextLine());
+
                         System.out.print("Liczba sztuk: ");
                         int liczba = Integer.parseInt(sc.nextLine());
 
                         ZakupionyProdukt produkt = new ZakupionyProdukt(nazwa, waga, cena, liczba);
                         manager.dodajProdukt(produkt);
                         System.out.println("Dodano produkt.");
+
                     } catch (IncorrectValueException e) {
-                        System.out.println("Nie dodano: " + e.getMessage());
+                        System.out.println("Nie dodano produktu: " + e.getMessage());
+                    } catch (NumberFormatException e) {
+                        System.out.println("Wprowadź poprawne liczby!");
                     } catch (Exception e) {
-                        System.out.println("Błąd danych wejściowych.");
+                        System.out.println("Błąd: " + e.getMessage());
                     }
                 }
                 case "2" -> manager.getListaZakupow().forEach(System.out::println);
@@ -172,6 +178,11 @@ public class KolokwiumLutomskiLogic {
             .mapToInt(ZakupionyProdukt::getLiczbaSztuk)
             .sum();
         System.out.println("\nŁączna liczba sztuk: " + liczbaSztuk);
+        
+        double avg = manager.getListaZakupow().stream()
+            .mapToDouble(ZakupionyProdukt::getCenaZaSztuke)
+            .average().orElse(0);
+        System.out.println("Średnia cena produktu: " + avg);
 
         //FILTROWANIE PARZYSTYCH
         List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
